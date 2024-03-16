@@ -1,0 +1,27 @@
+﻿
+@using RareCrew.Core.Entities
+﻿@using RareCrew.Services.ViewModel
+@model List<EmployeeViewModel>
+<h2>Employees</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Employee Name</th>
+            <th style ="padding-left: 20px;">Total Work Hours</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model)
+        {
+            <tr style="@(employee.TotalWorkHours < 100 ? "background-color: red;" : "")">
+                <td>@employee.EmployeeName</td>
+                <td style="padding-left: 20px;">@employee.TotalWorkHours</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
