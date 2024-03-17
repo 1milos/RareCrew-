@@ -1,7 +1,8 @@
 ﻿
 @using RareCrew.Core.Entities
 ﻿@using RareCrew.Services.ViewModel
-@model List<EmployeeViewModel>
+@model EmployeesViewModel
+
 <h2>Employees</h2>
 
 <table>
@@ -13,7 +14,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var employee in Model)
+        @foreach (var employee in Model.Employees)
         {
             <tr style="@(employee.TotalWorkHours < 100 ? "background-color: red;" : "")">
                 <td>@employee.EmployeeName</td>
@@ -22,6 +23,8 @@
         }
     </tbody>
 </table>
+<img src="data:image/png;base64,@Convert.ToBase64String(Model.PieChartBytes)" alt="Pie Chart" />
+
 
 
 

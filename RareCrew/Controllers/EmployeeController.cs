@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RareCrew.Services.Interfaces;
+using RareCrew.Services.ViewModel;
 
 
 namespace RareCrew.Controllers
@@ -22,7 +23,8 @@ namespace RareCrew.Controllers
             try
             {
                 var employees = await _employeeService.GetEmployeesAsync();
-                return View(employees);
+                var pieChartBytes = await _employeeService.GeneratePieChart(employees);
+                return View(new EmployeesViewModel { Employees = employees, PieChartBytes = pieChartBytes });
             }
             catch (Exception)
             {
